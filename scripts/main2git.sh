@@ -1,6 +1,7 @@
 #!/bin/bash
+export ND280VERSION=v11r31
 export VERSION=v0r0
-export MAINPATH=$HOME/ND280/highland2Systematics/tpcECalSystematics/$VERSION
+export MAINPATH=$HOME/ND280/$ND280VERSION/highland2Systematics/tpcECalSystematics/$VERSION
 export GITPATH=$HOME/tpcECalSystematics
 
 directories=(app dict macros parameters src)

@@ -74,7 +74,7 @@ void tpcECalSystematics::DefineMicroTrees(bool addBase)
    AddVarI(output(), track_charge,
       "Reconstructed charge of the selected track");
    AddVarF(output(), track_mom,
-      "Reconstructed momentum of selected track, from the refit assuming the " +
+      "Reconstructed momentum of selected track, from the refit assuming the "
       "electron hypothesis");
    AddVarF(output(), pullelec,
       "dE/dx pull of the track, assuming the electron hypothesis");
@@ -91,7 +91,7 @@ void tpcECalSystematics::DefineMicroTrees(bool addBase)
    AddVarI(output(), tpcNHits,
       "Number of hits the track has in the last TPC it passes through");
    AddVarI(output(), ecaldet,
-      "Number identifying the part of the ECal the track appears to enter. " +
+      "Number identifying the part of the ECal the track appears to enter. "
       "9 == DS, 5 - 8 == BR");
    AddVarI(output(), EnterDs,
       "Whether the track appears to enter the DS ECal");
@@ -108,10 +108,10 @@ void tpcECalSystematics::DefineMicroTrees(bool addBase)
    AddVarI(output(), NearestEcalShowerLike,
       "Whether the ECal segment is shower-like");
    AddVarD(output(), NearestEcalDiff,
-      "Difference in position of the end of the TPC track and the start of " +
+      "Difference in position of the end of the TPC track and the start of "
       "the ECal segment");
    AddVarD(output(), NearestEcalZDiff,
-      "Difference in z position of the end of the TPC track and the start of " +
+      "Difference in z position of the end of the TPC track and the start of "
       "the ECal segment");
    AddVarI(output(), NearestEcalNHits,
       "Number of ECal hits the ECal segment has");
@@ -119,7 +119,7 @@ void tpcECalSystematics::DefineMicroTrees(bool addBase)
       "Reconstructed Energy of the ECal segment");
 
    // True variables
-   AddVarI(output(), TrueBarrel, "Whether the TPC enters the barrel ECal in " +
+   AddVarI(output(), TrueBarrel, "Whether the TPC enters the barrel ECal in "
       "truth");
    AddVarI(output(), TrueDs, "Whether the TPC enters the DS ECal in truth");
 }
