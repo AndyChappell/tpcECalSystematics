@@ -1,0 +1,68 @@
+ 
+ < tpcECalSystematics.Corrections.UseGlobalEleMom.Enable = 1 >
+ < tpcECalSystematics.Corrections.EnableUseMuonAltMom = 1 >
+
+ < tpcECalSystematics.Output.SaveTrueXsecRatioRooTracker = 0 >
+ < tpcECalSystematics.Output.OnlyBANFFVariables = 0 >
+ < tpcECalSystematics.MinAccumLevelToSave.BANFF = 8 > 
+ < tpcECalSystematics.MinAccumLevelToSaveRooTracker.BANFF = 8 > 
+
+ < tpcECalSystematics.Systematics.DisableAllBaseSystematics = 1 >
+ < tpcECalSystematics.Systematics.TPCElectronPull.Enable = 0 >
+ < tpcECalSystematics.Systematics.TPCElectronPull.NAnalyses = 10 >
+ < tpcECalSystematics.Systematics.TPCElectronPull.Mean = 0. >
+ < tpcECalSystematics.Systematics.TPCElectronPull.Sigma = 0.13 >
+ 
+ < tpcECalSystematics.Corrections.UseTracker.Enable = 0 >
+ < tpcECalSystematics.Corrections.UseGlobalEleMom.Enable = 1 >
+ 
+ < tpcECalSystematics.FluxWeighting.Enable = 1 >
+ < tpcECalSystematics.FluxWeighting.File = $(PSYCHEUTILSROOT)/data/tuned13av1.0/run4/nd5_tuned13av1.0_13anom_run4.root >
+ < tpcECalSystematics.FluxWeighting.Tuning = tuned11b >
+
+Save only true tracks/vertices with recon association
+
+ < tpcECalSystematics.FlatTree.SaveTruthWithReconAssociation = 1 > 
+
+Enable/disable filling subdetector variables
+
+ < tpcECalSystematics.FlatTree.SaveTPCInfo     = 1 >	
+ < tpcECalSystematics.FlatTree.SaveFGDInfo     = 1 >	
+ < tpcECalSystematics.FlatTree.SaveP0DInfo     = 1 >	
+ < tpcECalSystematics.FlatTree.SaveECALInfo    = 1 >	
+ < tpcECalSystematics.FlatTree.SaveSMRDInfo    = 0 >	
+ < tpcECalSystematics.FlatTree.SaveTrackerInfo = 0 >	
+
+Preselection based on subdetector components 
+
+ < tpcECalSystematics.FlatTree.UseTPC1    = 1 >	
+ < tpcECalSystematics.FlatTree.UseTPC2    = 1 >	
+ < tpcECalSystematics.FlatTree.UseTPC3    = 1 >	
+ < tpcECalSystematics.FlatTree.UseFGD1    = 1 >	
+ < tpcECalSystematics.FlatTree.UseFGD2    = 1 >	
+ < tpcECalSystematics.FlatTree.UseP0D     = 0 >	
+ < tpcECalSystematics.FlatTree.UseDsECal  = 1 >	
+ < tpcECalSystematics.FlatTree.UseTrECal  = 1 >	
+ < tpcECalSystematics.FlatTree.UseP0DECal = 0 >	
+ < tpcECalSystematics.FlatTree.UseSMRD    = 0 >	
+
+Preselection based on true interaction type
+
+ < tpcECalSystematics.FlatTree.TrueVertex.NC          = 1 >	
+ < tpcECalSystematics.FlatTree.TrueVertex.NumuCC      = 1 >	
+ < tpcECalSystematics.FlatTree.TrueVertex.AntiNumuCC  = 1 >	
+ < tpcECalSystematics.FlatTree.TrueVertex.NueCC       = 1 >	
+
+Preselection based on true interaction detector
+
+ < tpcECalSystematics.FlatTree.TrueVertex.TPC1    = 0 >	
+ < tpcECalSystematics.FlatTree.TrueVertex.TPC2    = 0 >	
+ < tpcECalSystematics.FlatTree.TrueVertex.TPC3    = 0 >	
+ < tpcECalSystematics.FlatTree.TrueVertex.FGD1    = 1 >	
+ < tpcECalSystematics.FlatTree.TrueVertex.FGD2    = 1 >	
+ < tpcECalSystematics.FlatTree.TrueVertex.P0D     = 0 >	
+ < tpcECalSystematics.FlatTree.TrueVertex.DsECal  = 0 >	
+ < tpcECalSystematics.FlatTree.TrueVertex.TrECal  = 0 >	
+ < tpcECalSystematics.FlatTree.TrueVertex.P0DECal = 0 >	
+ < tpcECalSystematics.FlatTree.TrueVertex.SMRD    = 0 >	
+
