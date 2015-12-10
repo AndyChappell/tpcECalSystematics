@@ -663,6 +663,7 @@ void DrawingToolsTpcEcal::DrawCombinedHisto(DataSample& mc, DataSample& amc, con
 {
 	TH1F *hist = GetCombinedHisto(mc, amc, var, cut, nx, xbins, weight);
 	ProcessPlot(hist, opt, leg);
+   delete hist;
 }
 
 /*
@@ -705,7 +706,7 @@ TH1F* DrawingToolsTpcEcal::GetCombinedHisto(DataSample& mc, DataSample& amc, con
 
 	TH1F temp = (*hist1) + (*hist2);
 
-	TH1F *comb = &temp;
+	TH1F *comb = new TH1F(temp);
 
 	return comb;
 }
@@ -714,6 +715,7 @@ void DrawingToolsTpcEcal::DrawCombinedHisto(DataSample& mc, DataSample& amc, con
 {
 	TH2F *hist = GetCombinedHisto(mc, amc, var1, var2, cut, nx, xbins, ny, ybins, weight);
 	ProcessPlot(hist, opt, leg);
+   delete hist;
 }
 
 /*
@@ -762,7 +764,7 @@ TH2F* DrawingToolsTpcEcal::GetCombinedHisto(DataSample& mc, DataSample& amc, con
 
 	TH2F temp = (*hist1) + (*hist2);
 
-	TH2F *comb = &temp;
+	TH2F *comb = new TH2F(temp);
 
 	return comb;
 }
@@ -800,6 +802,9 @@ vector<double> DrawingToolsTpcEcal::GetCombinedEfficiency(DataSample& mc, DataSa
 
                 efferrors->at(i-1) = err; // Statistical errors only
         }
+        
+   delete selec;
+   delete total;
 
 	return efficiencies;
 }
@@ -836,6 +841,9 @@ vector< vector<double> > DrawingToolsTpcEcal::GetCombinedEfficiency(DataSample& 
 		}
         }
 
+   delete selec;
+   delete total;
+   
 	return efficiencies;
 }
 
