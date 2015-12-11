@@ -213,7 +213,7 @@ bool FindTracksDsPosDirAction::Apply(AnaEventB& event, ToyBoxB& box) const
       TVector3 enddir = utils::ArrayToTVector3(backTpc->DirectionEnd);
       TVector3 zdir(0., 0., 1.);
 
-      if (enddir.X() != enddir.X())
+      if (std::isnan(enddir.X()))
       {
          continue;
       }
@@ -255,7 +255,7 @@ bool FindTracksBarrelPosAction::Apply(AnaEventB& event, ToyBoxB& box) const
       {
          continue;
       }
-      if (endpos.X() != endpos.X())
+      if (std::isnan(endpos.X()))
       {
          continue;
       }
@@ -291,7 +291,7 @@ bool FindTracksBarrelPosDirAction::Apply(AnaEventB& event, ToyBoxB& box) const
       TVector3 enddir = utils::ArrayToTVector3(backTpc->DirectionEnd);
       TVector3 zdir(0., 0., 1.);
 
-      if (enddir.X() != enddir.X())
+      if (std::isnan(enddir.X()))
       {
          continue;
       }
