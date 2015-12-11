@@ -5,6 +5,7 @@
 #include "CategoriesUtils.hxx"
 #include "BasicUtils.hxx"
 #include "CutUtils.hxx"
+#include "SubDetId.hxx"
 
 /*
 TODO
@@ -148,17 +149,14 @@ void tpcECalSystematics::FillMicroTrees(bool addBase)
    output().FillVar(tpcNHits, backTpc->NHits);
    output().FillVar(IsHighestMom, (int)(track == tpcECalbox().HMtrack));
 
-   // Messy hack.
-   int det = static_cast<AnaTrack*>(track)->Detectors;
-   stringstream ss;
-   ss << det;
-   if(ss.str().find("7") != string::npos)
-   {
-      det = 9; // DS ECal
+   int det = -999;
+   if(IsDSECal(track->Detector))
+   {  // DS ECal
+      det = 9;
    }
-   else if(ss.str().find("9") != string::npos)
-   {
-      det = 5; // Barrel ECal
+   else if(IsBarrelECal(track->Detector))
+   {  // Barrel ECal
+      det = 5;
    }
    else
    {
@@ -198,11 +196,11 @@ void tpcECalSystematics::FillMicroTrees(bool addBase)
       int nDet = track->TrueTrack->nDetCrossings;
       for(int i=0; i<nDet; i++)
       {
-         if(DetCrossings[i]->Detector == 3)
+         if(IsBarrelECal(DetCrossings[i]->Detector))
          {
             TrueBarrel = true;
          }
-         if(DetCrossings[i]->Detector == 4)
+         if(IsDSECal(DetCrossings[i]->Detector))
          {
             TrueDS = true;
          }
@@ -254,4 +252,19 @@ void tpcECalSystematics::FillCategories()
    // Fill the track categories for color drawing
    anaUtils::FillCategories(_event, static_cast<AnaTrack*>(
       tpcECalbox().TrackToUse),"");
+}
+
+bool tpcECalSystematics::IsBarrelECal(const unsigned long detector)
+{
+   bool barrelLeft = (detector & (1 << SubDetId::kLeftTECAL)) ? true : false;
+   bool barrelRight = (detector & (1 << SubDetId::kRightTECAL)) ? true : false;
+   bool barrelTop = (detector & (1 << SubDetId::kTopTECAL)) ? true : false;
+   bool barrelBottom = (detector & (1 << SubDetId::kBottomTECAL)) ? true : false;
+      
+   return (barrelLeft || barrelRight || barrelTop || barrelBottom);
+}
+
+bool tpcECalSystematics::IsDSECal(const unsigned long detector)
+{   
+   return (detector & (1 << SubDetId::kDSECAL)) ? true : false;
 }
