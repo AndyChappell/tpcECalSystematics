@@ -304,7 +304,7 @@ bool HasTpcTracksCut::Apply(AnaEventB& event, ToyBoxB& box) const
    {
       AnaTpcTrack* backTpc = static_cast<AnaTpcTrack*>(
          anaUtils::GetTPCBackSegment(tracks[i]));
-      if (backTpc->NHits > 19)
+      if (SelectionCriteria::HasSufficientTpcNodes(*backTpc))
       {
          pass = true;
          break;

@@ -254,8 +254,8 @@ class SelectionCriteria
    static const int NumTpcNodes = 19;
    static const float DSTpcXMin = -920;
    static const float DSTpcXMax = +920;
-   static const float DSTpcYMin = -930;
-   static const float DSTpcYMax = +910;
+   static const float DSTpcYMin = -910;
+   static const float DSTpcYMax = +930;
    static const float DSTpcZMin = +2665;
    static const float DSTpcAngleMax = +40;
    static const float BarrelTpcXMin = -890;
