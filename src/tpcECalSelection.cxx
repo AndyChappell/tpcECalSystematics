@@ -170,16 +170,11 @@ bool FindTracksDsPosAction::Apply(AnaEventB& event, ToyBoxB& box) const
          anaUtils::GetTPCBackSegment(track));
       TVector3 endpos = utils::ArrayToTVector3(backTpc->PositionEnd);
 
-      if (!SelectionCriteria::HasSufficientTpcNodes(*backTpc))
+      if (SelectionCriteria::HasSufficientTpcNodes(*backTpc) &&
+         SelectionCriteria::IsPositionOkDSECal(endpos))
       {
-         continue;
+         tpcECalbox->DsPosTracks.push_back(track);
       }
-      if (!SelectionCriteria::IsPositionOkDSECal(endpos))
-      {
-         continue;
-      }
-
-      tpcECalbox->DsPosTracks.push_back(track);
    }
 
    return true;
@@ -200,12 +195,10 @@ bool FindTracksDsPosDirAction::Apply(AnaEventB& event, ToyBoxB& box) const
          anaUtils::GetTPCBackSegment(track));
       TVector3 enddir = utils::ArrayToTVector3(backTpc->DirectionEnd);
 
-      if(!SelectionCriteria::IsDirectionOkDSECal(enddir))
+      if(SelectionCriteria::IsDirectionOkDSECal(enddir))
       {
-         continue;
+         tpcECalbox->DsPosDirTracks.push_back(track);
       }
-
-      tpcECalbox->DsPosDirTracks.push_back(track);
    }
 
    return true;
@@ -225,16 +218,11 @@ bool FindTracksBarrelPosAction::Apply(AnaEventB& event, ToyBoxB& box) const
       AnaTpcTrack* backTpc = static_cast<AnaTpcTrack*> (anaUtils::GetTPCBackSegment(track));
       TVector3 endpos = utils::ArrayToTVector3(backTpc->PositionEnd);
 
-      if (!SelectionCriteria::HasSufficientTpcNodes(*backTpc))
+      if (SelectionCriteria::HasSufficientTpcNodes(*backTpc) &&
+         SelectionCriteria::IsPositionOkBarrelECal(endpos))
       {
-         continue;
+         tpcECalbox->BarrelPosTracks.push_back(track);
       }
-      if(!SelectionCriteria::IsPositionOkBarrelECal(endpos))
-      {
-         continue;
-      }
-
-      tpcECalbox->BarrelPosTracks.push_back(track);
    }
 
    return true;
@@ -255,12 +243,10 @@ bool FindTracksBarrelPosDirAction::Apply(AnaEventB& event, ToyBoxB& box) const
          anaUtils::GetTPCBackSegment(track));
       TVector3 enddir = utils::ArrayToTVector3(backTpc->DirectionEnd);
 
-      if(!SelectionCriteria::IsDirectionOkBarrelECal(enddir))
+      if(SelectionCriteria::IsDirectionOkBarrelECal(enddir))
       {
-         continue;
+         tpcECalbox->BarrelPosDirTracks.push_back(track);
       }
-
-      tpcECalbox->BarrelPosDirTracks.push_back(track);
    }
 
    return true;
