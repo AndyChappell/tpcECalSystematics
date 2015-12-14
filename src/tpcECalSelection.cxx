@@ -170,23 +170,11 @@ bool FindTracksDsPosAction::Apply(AnaEventB& event, ToyBoxB& box) const
          anaUtils::GetTPCBackSegment(track));
       TVector3 endpos = utils::ArrayToTVector3(backTpc->PositionEnd);
 
-      if (backTpc->NHits < 19)
+      if (!SelectionCriteria::HasSufficientTpcNodes(*backTpc))
       {
          continue;
       }
-      if (endpos.X() != endpos.X())
-      {
-         continue;
-      }
-      if (fabs(endpos.X()) > 920.)
-      {
-         continue;
-      }
-      if (fabs(endpos.Y() + 10.) > 920.)
-      {
-         continue;
-      }
-      if (endpos.Z() < 2665.)
+      if (!SelectionCriteria::IsPositionOkDSECal(endpos))
       {
          continue;
       }
@@ -211,15 +199,8 @@ bool FindTracksDsPosDirAction::Apply(AnaEventB& event, ToyBoxB& box) const
       AnaTpcTrack* backTpc = static_cast<AnaTpcTrack*>(
          anaUtils::GetTPCBackSegment(track));
       TVector3 enddir = utils::ArrayToTVector3(backTpc->DirectionEnd);
-      TVector3 zdir(0., 0., 1.);
 
-      if (std::isnan(enddir.X()))
-      {
-         continue;
-      }
-
-      double tpcBackAngleFromZ = TMath::RadToDeg() * enddir.Unit().Angle(zdir);
-      if (tpcBackAngleFromZ > 40)
+      if(!SelectionCriteria::IsDirectionOkDSECal(enddir))
       {
          continue;
       }
@@ -238,33 +219,17 @@ bool FindTracksBarrelPosAction::Apply(AnaEventB& event, ToyBoxB& box) const
 
    std::vector<AnaTrackB*> tpcTracks = tpcECalbox->FgdFvTracks;
 
-   double barrelLeft = 890.;
-   double barrelRight = -890.;
-   double barrelBottom = -980.;
-   double barrelTop = 1085.;
-   double barrelFront = 600.;
-   double barrelBack = 2600.;
-
    for (unsigned int i = 0; i < tpcTracks.size(); i++)
    {
       AnaTrackB* track = tpcTracks[i];
       AnaTpcTrack* backTpc = static_cast<AnaTpcTrack*> (anaUtils::GetTPCBackSegment(track));
       TVector3 endpos = utils::ArrayToTVector3(backTpc->PositionEnd);
 
-      if (backTpc->NHits < 19)
+      if (!SelectionCriteria::HasSufficientTpcNodes(*backTpc))
       {
          continue;
       }
-      if (std::isnan(endpos.X()))
-      {
-         continue;
-      }
-      if (!(endpos.X() > barrelLeft || endpos.X() < barrelRight ||
-         endpos.Y() < barrelBottom || endpos.Y() > barrelTop))
-      {
-         continue;
-      }
-      if(endpos.Z() < barrelFront || endpos.Z() > barrelBack)
+      if(!SelectionCriteria::IsPositionOkBarrelECal(endpos))
       {
          continue;
       }
@@ -289,34 +254,8 @@ bool FindTracksBarrelPosDirAction::Apply(AnaEventB& event, ToyBoxB& box) const
       AnaTpcTrack* backTpc = static_cast<AnaTpcTrack*>(
          anaUtils::GetTPCBackSegment(track));
       TVector3 enddir = utils::ArrayToTVector3(backTpc->DirectionEnd);
-      TVector3 zdir(0., 0., 1.);
 
-      if (std::isnan(enddir.X()))
-      {
-         continue;
-      }
-
-      double tpcBackAzimuth = TMath::RadToDeg() * TMath::ATan(
-         enddir.X() / enddir.Y());
-
-      if (enddir.X() > 0 && enddir.Y() < 0)
-      {
-         tpcBackAzimuth += 180;
-      }
-      else if (enddir.X() < 0 && enddir.Y() < 0)
-      {
-         tpcBackAzimuth -= 180;
-      }
-
-      double tpcBackAngleFromZ = enddir.Unit().Dot(zdir);
-      tpcBackAngleFromZ = TMath::RadToDeg() * TMath::ACos(tpcBackAngleFromZ);
-
-      if (tpcBackAzimuth > 160 || tpcBackAzimuth < -160)
-      {
-         continue;
-      }
-
-      if (tpcBackAngleFromZ < 35.)
+      if(!SelectionCriteria::IsDirectionOkBarrelECal(enddir))
       {
          continue;
       }
@@ -418,4 +357,75 @@ bool BarrelPosDirCut::Apply(AnaEventB& event, ToyBoxB& box) const
    ToyBoxTpcECal *tpcECalbox = static_cast<ToyBoxTpcECal*>(&box);
 
    return (tpcECalbox->BarrelPosDirTracks.size() > 0);
+}
+
+bool SelectionCriteria::HasSufficientTpcNodes(const AnaTpcTrack& track)
+{
+   return track.NHits >= NumTpcNodes;
+}
+
+bool SelectionCriteria::IsPositionOkDSECal(const TVector3& pos)
+{
+   if (std::isnan(pos.X()))
+   {
+      return false;
+   }
+
+   return ((pos.X() >= DSTpcXMin && pos.X() <= DSTpcXMax) &&
+      (pos.Y() >= DSTpcYMin && pos.Y() <= DSTpcYMax) &&
+      (pos.Z() >= DSTpcZMin));
+}
+
+bool SelectionCriteria::IsDirectionOkDSECal(const TVector3& dir)
+{
+   if (std::isnan(dir.X()))
+   {
+      return false;
+   }
+
+   TVector3 zdir(0.0, 0.0, 1.0);
+   double tpcBackAngleFromZ = TMath::RadToDeg() * dir.Unit().Angle(zdir);
+
+   return tpcBackAngleFromZ <= DSTpcAngleMax;
+}
+
+bool SelectionCriteria::IsPositionOkBarrelECal(const TVector3& pos)
+{
+   if (std::isnan(pos.X()))
+   {
+      return false;
+   }
+
+   // Track should exit most downstream TPC outside of the region enclosed by
+   // [BarrelTpcXMin to BarrelTpcXMax, BarrelTpcYMin to BarrelTpcYMax]
+   // and within [BarrelTpcZMin, BarrelTpcZMax]
+   return (!((pos.X() >= BarrelTpcXMin && pos.X() <= BarrelTpcXMax) &&
+      (pos.Y() >= BarrelTpcYMin && pos.Y() <= BarrelTpcYMax)) &&
+      (pos.Z() >= BarrelTpcZMin && pos.Z() <= BarrelTpcZMax));
+}
+
+bool SelectionCriteria::IsDirectionOkBarrelECal(const TVector3& dir)
+{
+   if (std::isnan(dir.X()))
+   {
+      return false;
+   }
+
+   TVector3 zdir(0.0, 0.0, 1.0);
+   double tpcBackAzimuth = TMath::RadToDeg() * TMath::ATan(dir.X() / dir.Y());
+
+   if (dir.X() > 0 && dir.Y() < 0)
+   {
+      tpcBackAzimuth += 180;
+   }
+   else if (dir.X() < 0 && dir.Y() < 0)
+   {
+      tpcBackAzimuth -= 180;
+   }
+
+   double tpcBackAngleFromZ = dir.Unit().Dot(zdir);
+   tpcBackAngleFromZ = TMath::RadToDeg() * TMath::ACos(tpcBackAngleFromZ);
+
+   return ((tpcBackAngleFromZ >= BarrelTpcAngleMin) &&
+      (fabs(tpcBackAzimuth) <= BarrelTpcAzimuthAbs));
 }

@@ -5,6 +5,7 @@
 #include "BasicUtils.hxx"
 
 #include "Parameters.hxx"
+#include "baseAnalysis.hxx"
 
 class tpcECalSelection: public SelectionBase
 {
@@ -198,6 +199,73 @@ class BarrelPosDirCut: public StepBase
    using StepBase::Apply;
    bool Apply(AnaEventB& event, ToyBoxB& box) const;
    StepBase* MakeClone(){ return new BarrelPosDirCut(); }
+};
+
+class SelectionCriteria
+{
+   public:
+   /**
+      Checks whether a track has more than 18 TPC nodes in the most downstream
+      TPC.
+      \param track   The TPC track to be checked.
+      \return  True if the track has more than 18 TPC nodes, false otherwise.
+   */
+   static bool HasSufficientTpcNodes(const AnaTpcTrack& tpc);
+
+   /**
+      Checks whether tracks entering the DS ECal have emerged from a specified
+      volume within the most downstream TPC.
+      \param pos  The position to be checked.
+      \return  True if the track exited the most downstream TPC from within the
+               specified volume.
+   */
+   static bool IsPositionOkDSECal(const TVector3& pos);
+
+   /**
+      Checks whether tracks entering the DS ECal have emerged from within a
+      specified cone within the most downstream TPC.
+      \param dir  The direction to be checked.
+      \return  True if the track exited the most downstream TPC from within the
+               specified cone.
+   */
+   static bool IsDirectionOkDSECal(const TVector3& dir);
+
+   /**
+      Checks whether tracks entering the Barrel ECal have emerged from a
+      specified volume within the most downstream TPC.
+      \param pos  The position to be checked.
+      \return  True if the track exited the most downstream TPC from within the
+               specified volume.
+   */
+   static bool IsPositionOkBarrelECal(const TVector3& pos);
+
+   /**
+      Checks whether tracks entering the Barrel ECal have emerged from within a
+      specified cone within the most downstream TPC.
+      \param dir  The direction to be checked.
+      \return  True if the track exited the most downstream TPC from within the
+               specified cone.
+   */
+   static bool IsDirectionOkBarrelECal(const TVector3& dir);
+   
+   private:
+   SelectionCriteria(){ };
+
+   static const int NumTpcNodes = 19;
+   static const float DSTpcXMin = -920;
+   static const float DSTpcXMax = +920;
+   static const float DSTpcYMin = -930;
+   static const float DSTpcYMax = +910;
+   static const float DSTpcZMin = +2665;
+   static const float DSTpcAngleMax = +40;
+   static const float BarrelTpcXMin = -890;
+   static const float BarrelTpcXMax = +890;
+   static const float BarrelTpcYMin = -980;
+   static const float BarrelTpcYMax = +1085;
+   static const float BarrelTpcZMin = +600;
+   static const float BarrelTpcZMax = +2600;
+   static const float BarrelTpcAzimuthAbs = +160;
+   static const float BarrelTpcAngleMin = +35;
 };
 
 #endif
