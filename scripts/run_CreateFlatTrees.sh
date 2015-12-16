@@ -50,14 +50,33 @@ fi
 source $ND280PATH/highland2Systematics/tpcECalSystematics/v*/cmt/setup.sh
 cd $TN228HOME
 
-runs=(1_rdp 1_mcp 1_a_rdp 1_a_mcp)
-for i in 0 1 2 3
+if isTesting; then
+   runs=(1_rdp 1_mcp 1_a_rdp 1_a_mcp)
+   indices=(0 1 2 3)
+else
+   runs=(1 2 3b 3c 4 5c)
+   indices=(0 1 2 3 4 5)
+fi
+
+pids=""
+
+count=1
+for i in ${indices[@]}
 do
    # Delete the old flattree
    rm $TN228HOME/flattrees/${TESTDIR}flattree_${runs[$i]}.root
    # Create a new flattree
    RunCreateFlatTree.exe -o $TN228HOME/flattrees/${TESTDIR}flattree_${runs[$i]}.root $TN228HOME/input_files/${TESTDIR}input_${runs[$i]}.list > $TN228HOME/logs/${TESTDIR}CreateFlattree_${runs[$i]}.log &
-   proc[$i]=$!
+   pids="$pids $!"
+   if ((($i + 1) % 3)); then
+      echo ""
+   else
+      # Don't attempt to run more than 3 of these processes in parallel on a
+      # standalone CSC machine, you'll probably run out of memory
+      wait $pids
+   fi
 done
-wait "${proc[0]}" "${proc[1]}" "${proc[2]}" "${proc[3]}"
+
+wait $pids
+
 echo "Complete"
