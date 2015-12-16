@@ -54,7 +54,7 @@ if isTesting; then
    runs=(1_rdp 1_mcp 1_a_rdp 1_a_mcp)
    indices=(0 1 2 3)
 else
-   runs=(1 2 3b 3c 4 5c)
+   runs=(1_rdp 2_rdp 3b_rdp 3c_rdp 4_rdp 5c_rdp)
    indices=(0 1 2 3 4 5)
 fi
 
