@@ -56,7 +56,7 @@ do
    # Delete the old flattree
    rm $TN228HOME/flattrees/${TESTDIR}flattree_${runs[$i]}.root
    # Create a new flattree
-   RunCreateFlatTree.exe -p $TN228HOME/params/tpcECalMatchingAnalysis.params.dat -o $TN228HOME/flattrees/${TESTDIR}flattree_${runs[$i]}.root $TN228HOME/input_files/${TESTDIR}input_${runs[$i]}.list > $TN228HOME/logs/${TESTDIR}CreateFlattree_${runs[$i]}.log &
+   RunCreateFlatTree.exe -o $TN228HOME/flattrees/${TESTDIR}flattree_${runs[$i]}.root $TN228HOME/input_files/${TESTDIR}input_${runs[$i]}.list > $TN228HOME/logs/${TESTDIR}CreateFlattree_${runs[$i]}.log &
    proc[$i]=$!
 done
 wait "${proc[0]}" "${proc[1]}" "${proc[2]}" "${proc[3]}"

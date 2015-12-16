@@ -54,7 +54,7 @@ runs=(neutrino antineutrino mcneutrino mcantineutrino)
 for i in 0 1 2 3
 do
    rm $TN228HOME/microtrees/${TESTDIR}${runs[$i]}.root
-   RunTpcECalMatchingAnalysis.exe -p $TN228HOME/params/tpcECalMatchingAnalysis.params.dat -o $TN228HOME/microtrees/${TESTDIR}${runs[$i]}.root $TN228HOME/input_files/${TESTDIR}${runs[$i]}_flattrees.list > $TN228HOME/logs/${TESTDIR}TpcECal_${runs[$i]}.log &
+   RunTpcECalMatchingAnalysis.exe -o $TN228HOME/microtrees/${TESTDIR}${runs[$i]}.root $TN228HOME/input_files/${TESTDIR}${runs[$i]}_flattrees.list > $TN228HOME/logs/${TESTDIR}TpcECal_${runs[$i]}.log &
    proc[$i]=$!
 done
 wait "${proc[0]}" "${proc[1]}" "${proc[2]}" "${proc[3]}"
