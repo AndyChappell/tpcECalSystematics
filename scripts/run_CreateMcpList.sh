@@ -167,7 +167,7 @@ do
    else
       id="$(($i + 1))"
    fi
-   sed -n "${from[$i]},${to[$i]} p" $TN228HOME/input_files/run5c_mcp.list > $TN228HOME/input_files/input_5_${id}_mcp.list
+   sed -n "${from[$i]},${to[$i]} p" $TN228HOME/input_files/run5c_mcp.list > $TN228HOME/input_files/input_5c_${id}_mcp.list
 done
 
 rm $TN228HOME/input_files/run5c_mcp.list
