@@ -54,8 +54,15 @@ if isTesting; then
    runs=(1_rdp 1_mcp 1_a_rdp 1_a_mcp)
    indices=(0 1 2 3)
 else
-   runs=(1_rdp 2_rdp 3b_rdp 3c_rdp 4_rdp 5c_rdp)
-   indices=(0 1 2 3 4 5)
+   runs=(2_01_mcp 2_02_mcp 2_03_mcp 2_04_mcp 2_05_mcp 2_06_mcp 2_07_mcp \
+      2_08_mcp 2_09_mcp 2_10_mcp 2_11_mcp 2_12_mcp 3b_01_mcp 3b_02_mcp \
+      3b_03_mcp 3c_01_mcp 3c_02_mcp 3c_03_mcp 3c_04_mcp 3c_05_mcp 3c_06_mcp \
+      3c_07_mcp 3c_08_mcp 3c_09_mcp 3c_10_mcp 3c_11_mcp 3c_12_mcp 3c_13_mcp \
+      3c_14_mcp 3c_15_mcp 3c_16_mcp 3c_17_mcp 3c_18_mcp 4_01_mcp 4_02_mcp \
+      4_03_mcp 4_04_mcp 4_05_mcp 4_06_mcp 4_07_mcp 4_08_mcp 4_09_mcp 4_10_mcp \
+      4_11_mcp 4_12_mcp 4_13_mcp 4_14_mcp 4_15_mcp 4_16_mcp 4_17_mcp 4_18_mcp \
+      5c_01_mcp 5c_02_mcp 5c_03_mcp 5c_04_mcp 5c_05_mcp 5c_06_mcp)
+   indices=({0..56})
 fi
 
 pids=""

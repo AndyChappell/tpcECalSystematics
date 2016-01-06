@@ -51,11 +51,12 @@ cd $TN228HOME
 source $ND280PATH/highland2Systematics/tpcECalSystematics/v*/cmt/setup.sh
 
 runs=(neutrino antineutrino mcneutrino mcantineutrino)
-for i in 0 1 2 3
+indices=({0..3})
+for i in ${indices[@]}
 do
    rm $TN228HOME/microtrees/${TESTDIR}${runs[$i]}.root
    RunTpcECalMatchingAnalysis.exe -o $TN228HOME/microtrees/${TESTDIR}${runs[$i]}.root $TN228HOME/input_files/${TESTDIR}${runs[$i]}_flattrees.list > $TN228HOME/logs/${TESTDIR}TpcECal_${runs[$i]}.log &
-   proc[$i]=$!
+   pids="$pids $!"
 done
-wait "${proc[0]}" "${proc[1]}" "${proc[2]}" "${proc[3]}"
+wait $pids
 echo "Complete"
