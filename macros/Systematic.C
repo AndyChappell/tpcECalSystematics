@@ -21,25 +21,25 @@
       Total selections.
    ****************************************************************************/
 
-   draw.SetLegendSize(0.2, 0.15);
-   draw.SetLegendPos(0.75, 0.6);
+//   draw.SetLegendSize(0.2, 0.5);
 
+   draw.SetLegendPos("tr");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.SetTitleY("Counts/Bin");
    draw.Draw(data, mc, momentum, nds_mom, ds_bins_mom, "particle", isDS);
    c1->Print("Plots/Selections/sel_ds_all_mom.pdf");
 
-   draw.SetLegendPos("l");
+   draw.SetLegendPos("tl");
    draw.SetTitleX("cosine(Track Angle)");
    draw.Draw(data, mc, angle, nds_ang, ds_bins_ang, "particle", isDS);
    c1->Print("Plots/Selections/sel_ds_all_ang.pdf");
 
-   draw.SetLegendPos("r");
+   draw.SetLegendPos("tr");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.Draw(data, mc, momentum, nbr_mom, br_bins_mom, "particle", isBr);
    c1->Print("Plots/Selections/sel_br_all_mom.pdf");
 
-   draw.SetLegendPos("l");
+   draw.SetLegendPos("tl");
    draw.SetTitleX("cosine(Track Angle)");
    draw.Draw(data, mc, angle, nbr_ang, br_bins_ang, "particle", isBr);
    c1->Print("Plots/Selections/sel_br_all_ang.pdf");
@@ -48,44 +48,48 @@
       Electron selections.
    ****************************************************************************/
 
-   draw.SetLegendPos("r");
+   draw.SetLegendPos("tr");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.Draw(data, mc, momentum, nds_mom, ds_bins_mom, "particle", isDS + isEl);
    c1->Print("Plots/Selections/sel_ds_ele_mom.pdf");
 
-   draw.SetLegendPos("l");
+   draw.SetLegendPos("tl");
    draw.SetTitleX("cosine(Track Angle)");
    draw.Draw(data, mc, angle, nds_ang, ds_bins_ang, "particle", isDS + isEl);
    c1->Print("Plots/Selections/sel_ds_ele_ang.pdf");
 
-   draw.SetLegendPos("r");
+   draw.SetLegendPos("tr");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.Draw(data, mc, momentum, nbr_mom, br_bins_mom, "particle", isBr + isEl);
    c1->Print("Plots/Selections/sel_br_ele_mom.pdf");
 
+   draw.SetLegendSize(0.2, 0.25);
+   draw.SetLegendPos("tr");
    draw.SetTitleX("cosine(Track Angle)");
    draw.Draw(data, mc, angle, nbr_ang, br_bins_ang, "particle", isBr + isEl);
    c1->Print("Plots/Selections/sel_br_ele_ang.pdf");
+   draw.SetLegendSize(0.3, 0.4);
 
    /****************************************************************************
       Muon selections.
    ****************************************************************************/
 
+   draw.SetLegendPos("tr");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.Draw(data, mc, momentum, nds_mom, ds_bins_mom, "particle", isDS + isMu);
    c1->Print("Plots/Selections/sel_ds_mu_mom.pdf");
 
-   draw.SetLegendPos("l");
+   draw.SetLegendPos("tl");
    draw.SetTitleX("cosine(Track Angle)");
    draw.Draw(data, mc, angle, nds_ang, ds_bins_ang, "particle", isDS + isMu);
    c1->Print("Plots/Selections/sel_ds_mu_ang.pdf");
 
-   draw.SetLegendPos("r");
+   draw.SetLegendPos("tr");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.Draw(data, mc, momentum, nbr_mom, br_bins_mom, "particle", isBr + isMu);
    c1->Print("Plots/Selections/sel_br_mu_mom.pdf");
 
-   draw.SetLegendPos("l");
+   draw.SetLegendPos("tl");
    draw.SetTitleX("cosine(Track Angle)");
    draw.Draw(data, mc, angle, nbr_ang, br_bins_ang, "particle", isBr + isMu);
    c1->Print("Plots/Selections/sel_br_mu_ang.pdf");
@@ -94,6 +98,8 @@
       1D Efficiency plots, all particles.
    ****************************************************************************/
 
+   draw.SetLegendSize(0.15, 0.1);
+   draw.SetLegendPos("br");
    draw.SetTitleY("Matching Efficiency");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.DrawEfficiency(data, momentum, isDS + " && !EnterBarrel && EnterDs",
@@ -102,6 +108,7 @@
       recoDS, nds_mom, ds_bins_mom, "same", "#nu MC");
    c1->Print("Plots/Systematics/eff_ds_all_mom.pdf");
 
+   draw.SetLegendPos("br");
    draw.SetTitleX("cosine(Track Angle)");
    draw.DrawEfficiency(data, angle, isDS + " && !EnterBarrel && EnterDs",
       recoDS, nds_ang, ds_bins_ang, "", "#nu Data");
@@ -109,6 +116,7 @@
       nds_ang, ds_bins_ang, "same", "#nu MC");
    c1->Print("Plots/Systematics/eff_ds_all_ang.pdf");
 
+   draw.SetLegendPos("br");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.DrawEfficiency(data, momentum, isBr + " && EnterBarrel && !EnterDs",
       recoBr, nbr_mom, br_bins_mom, "", "#nu Data");
@@ -116,6 +124,7 @@
       recoBr, nbr_mom, br_bins_mom, "same", "#nu MC");
    c1->Print("Plots/Systematics/eff_br_all_mom.pdf");
 
+   draw.SetLegendPos("br");
    draw.SetTitleX("cosine(Track Angle)");
    draw.DrawEfficiency(data, angle, isBr + " && EnterBarrel && !EnterDs",
       recoBr, nbr_ang, br_bins_ang, "", "#nu Data");
@@ -123,6 +132,8 @@
       nbr_ang, br_bins_ang, "same", "#nu MC");
    c1->Print("Plots/Systematics/eff_br_all_ang.pdf");
 
+   draw.SetLegendSize(0.15, 0.2);
+   draw.SetLegendPos("br");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.DrawEfficiency(data, momentum, isDS + " && !EnterBarrel && EnterDs",
       recoDS, nds_mom, ds_bins_mom, "", "#nu Data");
@@ -135,6 +146,7 @@
       recoDS, nds_mom, ds_bins_mom, "same", "#bar{#nu} MC");
    c1->Print("Plots/Systematics/eff_ds_all_mom_all.pdf");
 
+   draw.SetLegendPos("br");
    draw.DrawEfficiency(data, momentum, isBr + " && EnterBarrel && !EnterDs",
       recoBr, nbr_mom, br_bins_mom, "", "#nu Data");
    draw.DrawEfficiency(mc, momentum, isBr + " && EnterBarrel && !EnterDs",
@@ -150,6 +162,8 @@
       1D systematics plots, all particles.
    ****************************************************************************/
 
+   draw.SetLegendSize(0.15, 0.1);
+   draw.SetLegendPos("br");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.SetTitleY("Systematic Uncertainty");
    draw.CalculateSystematic(data, mc, momentum, isDS +
@@ -160,6 +174,7 @@
       "e1same", "#nu + #bar{#nu}");
    c1.Print("Plots/Systematics/syst_ds_all_mom.pdf");
 
+   draw.SetLegendPos("br");
    draw.SetTitleX("cosine(Track Angle)");
    draw.CalculateSystematic(data, mc, angle, isDS +
       " && !EnterBarrel && EnterDs", "ecaldet == 9", nds_ang, ds_bins_ang,
@@ -169,6 +184,7 @@
       "e1same", "#nu + #bar{#nu}");
    c1.Print("Plots/Systematics/syst_ds_all_ang.pdf");
 
+   draw.SetLegendPos("br");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.CalculateSystematic(data, mc, momentum, isBr +
       " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom, "e1", "#nu");
@@ -177,6 +193,7 @@
       "#nu + #bar{#nu}");
    c1.Print("Plots/Systematics/syst_br_all_mom.pdf");
 
+   draw.SetLegendPos("br");
    draw.SetTitleX("cosine(Track Angle)");
    draw.CalculateSystematic(data, mc, angle, isBr +
       " && EnterBarrel && !EnterDs", recoBr, nbr_ang, br_bins_ang, "e1", "#nu");
@@ -229,10 +246,8 @@
       Different particles.
    ****************************************************************************/
 
-   draw.SetLegendSize(0.2, 0.15);
-   draw.SetLegendPos(0.75, 0.6);
-
    // Electrons
+   draw.SetLegendPos("br");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.SetTitleY("Matching Efficiency");
    draw.DrawCombinedEfficiency(data, anti_data, momentum, isDS + isEl +
@@ -241,6 +256,7 @@
       " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom, "same", "MC");
    c1->Print("Plots/Systematics/eff_ds_ele_mom.pdf");
 
+   draw.SetLegendPos("br");
    draw.DrawCombinedEfficiency(data, anti_data, momentum, isBr + isEl +
       " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom, "", "Data");
    draw.DrawCombinedEfficiency(mc, anti_mc, momentum, isBr + isEl +
@@ -257,6 +273,7 @@
    c1->Print("Plots/Systematics/syst_br_ele_mom.pdf");
 
    // Muons
+   draw.SetLegendPos("br");
    draw.SetTitleY("Matching Efficiency");
    draw.DrawCombinedEfficiency(data, anti_data, momentum, isDS + isMu +
       " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom, "", "Data");
@@ -264,6 +281,7 @@
       " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom, "same", "MC");
    c1->Print("Plots/Systematics/eff_ds_mu_mom.pdf");
 
+   draw.SetLegendPos("br");
    draw.DrawCombinedEfficiency(data, anti_data, momentum, isBr + isMu +
       " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom, "", "Data");
    draw.DrawCombinedEfficiency(mc, anti_mc, momentum, isBr + isMu +
@@ -280,12 +298,14 @@
    c1->Print("Plots/Systematics/syst_br_mu_mom.pdf");
 
    // Protons
+   draw.SetLegendPos("br");
    draw.DrawCombinedEfficiency(data, anti_data, momentum, isDS + isProt +
       " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom, "", "Data");
    draw.DrawCombinedEfficiency(mc, anti_mc, momentum, isDS + isProt +
       " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom, "same", "MC");
    c1->Print("Plots/Systematics/eff_ds_prot_mom.pdf");
 
+   draw.SetLegendPos("br");
    draw.DrawCombinedEfficiency(data, anti_data, momentum, isBr + isProt +
       " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom, "", "Data");
    draw.DrawCombinedEfficiency(mc, anti_mc, momentum, isBr + isProt +
@@ -306,8 +326,8 @@
       What was "cut" is now signal. Confusing.
    ****************************************************************************/
 
+   draw.SetLegendPos("br");
    draw.SetTitleY("Matching Efficiency");
-
    draw.SetTitleX("Track Momentum (MeV)");
    draw.DrawEfficiency(mc, momentum, isDS + "&& TrueDs", isDS +
       " && ecaldet==9", nds_mom, ds_bins_mom, "", "#nu MC");
@@ -315,6 +335,7 @@
       "&& ecaldet==9", nds_mom, ds_bins_mom, "same", "#bar{#nu} MC");
    c1->Print("Plots/Others/true_eff_ds_all_mom.pdf");
 
+   draw.SetLegendPos("br");
    draw.SetTitleX("cosine(Track Angle)");
    draw.DrawEfficiency(mc, angle, isDS + "&& TrueDs", isDS + " && ecaldet==9",
       nds_ang, ds_bins_ang, "", "#nu MC");
@@ -322,6 +343,7 @@
       " && ecaldet==9", nds_ang, ds_bins_ang, "same", "#bar{#nu} MC");
    c1->Print("Plots/Others/true_eff_ds_all_ang.pdf");
 
+   draw.SetLegendPos("br");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.DrawEfficiency(mc, momentum, isBr + "&& TrueBarrel", isBr +
       " && ecaldet<9 && ecaldet>4", nbr_mom, br_bins_mom, "", "#nu MC");
@@ -329,6 +351,7 @@
       "&& ecaldet<9 && ecaldet>4", nbr_mom, br_bins_mom, "same", "#bar{#nu} MC");
    c1->Print("Plots/Others/true_eff_br_all_mom.pdf");
 
+   draw.SetLegendPos("br");
    draw.SetTitleX("cosine(Track Angle)");
    draw.DrawEfficiency(mc, angle, isBr + "&& TrueBarrel", isBr +
       "&& ecaldet<9 && ecaldet>4", nbr_ang, br_bins_ang, "", "#nu MC");
@@ -340,20 +363,19 @@
       Event weights. For combining histograms.
    ****************************************************************************/
 
-   draw.SetLegendSize(0.2, 0.15);
-   draw.SetLegendPos(0.75, 0.8);
-
+   draw.SetLegendPos("br");
    draw.SetTitleY("Event Weight");
    draw.DrawRatio(data, anti_data, momentum, nds_mom, ds_bins_mom, isDS, isDS,
-      1, "", "e1", "Data");
+      1, "", "e1", "Data");      
    draw.DrawRatio(mc, anti_mc, momentum, nds_mom, ds_bins_mom, isDS, isDS,
-      1, "same", "e1same", "MC");
+      1, "same", "e1", "MC");
    c1->Print("Plots/Others/ratio_ds_all_mom.pdf");
 
+   draw.SetLegendPos("br");
    draw.DrawRatio(data, anti_data, momentum, nbr_mom, br_bins_mom, isBr, isBr,
       1, "", "e1", "Data");
    draw.DrawRatio(mc, anti_mc, momentum, nbr_mom, br_bins_mom, isBr, isBr,
-      1, "same", "e1same", "MC");
+      1, "same", "e1", "MC");
    c1->Print("Plots/Others/ratio_br_all_mom.pdf");
 
    c1->Close();
