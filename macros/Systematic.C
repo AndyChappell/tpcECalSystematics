@@ -21,7 +21,7 @@
       Total selections.
    ****************************************************************************/
 
-//   draw.SetLegendSize(0.2, 0.5);
+   draw.SetLegendSize(0.2, 0.4);
 
    draw.SetLegendPos("tr");
    draw.SetTitleX("Track Momentum (MeV)");
@@ -63,12 +63,10 @@
    draw.Draw(data, mc, momentum, nbr_mom, br_bins_mom, "particle", isBr + isEl);
    c1->Print("Plots/Selections/sel_br_ele_mom.pdf");
 
-   draw.SetLegendSize(0.2, 0.25);
-   draw.SetLegendPos("tr");
+   draw.SetLegendPos("tl");
    draw.SetTitleX("cosine(Track Angle)");
    draw.Draw(data, mc, angle, nbr_ang, br_bins_ang, "particle", isBr + isEl);
    c1->Print("Plots/Selections/sel_br_ele_ang.pdf");
-   draw.SetLegendSize(0.3, 0.4);
 
    /****************************************************************************
       Muon selections.

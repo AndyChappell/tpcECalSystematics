@@ -22,8 +22,7 @@
       Check data/mc agreement for neutrino mode.
    ****************************************************************************/
 
-   //draw.SetLegendSize(0.25, 0.35);
-   //draw.SetLegendPos(0.7, 0.6);
+   draw.SetLegendSize(0.2, 0.4);
 
    draw.SetLegendPos("tr");
    draw.SetTitleX("Track Momentum (MeV)");
@@ -72,7 +71,7 @@
       Check data/mc agreement for anti-neutrino.
    ****************************************************************************/
 
-   draw.SetLegendSize(0.3, 0.4);
+   draw.SetLegendSize(0.2, 0.4);
 
    draw.SetLegendPos("tr");
    draw.SetTitleX("Track Momentum (MeV)");
@@ -123,7 +122,7 @@
       Check neutrino MC against anti-neutrino MC
    ****************************************************************************/
 
-   draw.SetLegendSize(0.3, 0.4);
+   draw.SetLegendSize(0.2, 0.4);
 
    draw.SetLegendPos("tr");
    draw.SetTitleX("Track Momentum (MeV)");
@@ -177,7 +176,7 @@
       Check Neutrino Data against anti-neutrino Data
    ****************************************************************************/
 
-   draw.SetLegendSize(0.3, 0.4);
+   draw.SetLegendSize(0.2, 0.4);
 
    draw.SetLegendPos("tr");
    draw.SetTitleX("Track Momentum (MeV)");
