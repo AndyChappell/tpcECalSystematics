@@ -230,6 +230,16 @@
       2D systematics plots.
    ****************************************************************************/
 
+   draw.CalculateSystematic(data, mc, momentum, angle,
+      isDS + " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom,
+      nds_ang, ds_bins_ang, "COLZTEXT");
+   c1->Print("Plots/Systematics/syst_neutonly_ds_all_2d.pdf");
+
+   draw.CalculateSystematic(data, mc, momentum, angle,
+      isBr + " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom,
+      nbr_ang, br_bins_ang, "COLZTEXT");
+   c1->Print("Plots/Systematics/syst_neutonly_br_all_2d.pdf");
+
    draw.CalculateSystematic(data, anti_data, mc, anti_mc, momentum, angle,
       isDS + " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom,
       nds_ang, ds_bins_ang, "COLZTEXT");
