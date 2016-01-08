@@ -118,6 +118,26 @@
       br_bins_mom, "same", "#bar{#nu} MC");
    c1.Print("Plots/BarNu/eff_br_mom.pdf");
 
+   draw.SetLegendPos("br");
+   draw.SetTitleX("cosine(Track Angle)");
+   draw.SetTitleY("Matching Efficiency");
+   draw.DrawEfficiency(anti_data, angle,
+      "(accum_level[][0]>4 && !EnterBarrel && EnterDs)", recoDS, nds_ang,
+      ds_bins_ang, "", "#bar{#nu} Data");
+   draw.DrawEfficiency(anti_mc, angle,
+      "(accum_level[][0]>4 && !EnterBarrel && EnterDs)", recoDS, nds_ang,
+      ds_bins_ang, "same", "#bar{#nu} MC");
+   c1.Print("Plots/BarNu/eff_ds_ang.pdf");
+
+   draw.SetLegendPos("br");
+   draw.DrawEfficiency(anti_data, angle,
+      "(accum_level[][1]>4 && EnterBarrel && !EnterDs)", recoBr, nbr_ang,
+      br_bins_ang, "", "#bar{#nu} Data");
+   draw.DrawEfficiency(anti_mc, angle,
+      "(accum_level[][1]>4 && EnterBarrel && !EnterDs)", recoBr, nbr_ang,
+      br_bins_ang, "same", "#bar{#nu} MC");
+   c1.Print("Plots/BarNu/eff_br_ang.pdf");
+
    /****************************************************************************
       Check neutrino MC against anti-neutrino MC
    ****************************************************************************/
@@ -127,13 +147,13 @@
    draw.SetLegendPos("tr");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.SetTitleY("Counts/Bin");
-   draw.Draw(anti_mc, mc, momentum, nds_mom, ds_bins_mom, "particle", isDS, 1,
+   draw.Draw(mc, anti_mc, momentum, nds_mom, ds_bins_mom, "particle", isDS, 1,
       "", "AREA");
    c1->Print("Plots/MC/ds_mom.pdf");
 
    draw.SetLegendPos("tl");
    draw.SetTitleX("cosine(Track Angle)");
-   draw.Draw(anti_mc, mc, angle, nds_ang, ds_bins_ang, "particle", isDS, 1, "",
+   draw.Draw(mc, anti_mc, angle, nds_ang, ds_bins_ang, "particle", isDS, 1, "",
       "AREA");
    c1->Print("Plots/MC/ds_ang.pdf");
 
@@ -172,6 +192,26 @@
       ds_bins_mom, "same", "#bar{#nu} MC");
    c1.Print("Plots/MC/eff_ds_mom.pdf");
 
+   draw.SetLegendPos("br");
+   draw.SetTitleX("cosine(Track Angle)");
+   draw.SetTitleY("Matching Efficiency");
+   draw.DrawEfficiency(mc, angle,
+      "(accum_level[][1]>4 && EnterBarrel && !EnterDs)", recoBr, nbr_ang,
+      br_bins_ang, "", "#nu MC");
+   draw.DrawEfficiency(anti_mc, angle,
+      "(accum_level[][1]>4 && EnterBarrel && !EnterDs)", recoBr, nbr_ang,
+      br_bins_ang, "same", "#bar{#nu} MC");
+   c1.Print("Plots/MC/eff_br_ang.pdf");
+
+   draw.SetLegendPos("br");
+   draw.DrawEfficiency(mc, angle,
+      "(accum_level[][0]>4 && !EnterBarrel && EnterDs)", recoDS, nds_ang,
+      ds_bins_ang, "", "#nu MC");
+   draw.DrawEfficiency(anti_mc, angle,
+      "(accum_level[][0]>4 && !EnterBarrel && EnterDs)", recoDS, nds_ang,
+      ds_bins_ang, "same", "#bar{#nu} MC");
+   c1.Print("Plots/MC/eff_ds_ang.pdf");
+
    /****************************************************************************
       Check Neutrino Data against anti-neutrino Data
    ****************************************************************************/
@@ -181,7 +221,7 @@
    draw.SetLegendPos("tr");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.SetTitleY("Counts/Bin");
-   draw.Draw(anti_data, data, momentum, nds_mom, ds_bins_mom, "particle", isDS,
+   draw.Draw(data, anti_data, momentum, nds_mom, ds_bins_mom, "particle", isDS,
       1, "", "AREA");
    c1->Print("Plots/Data/ds_mom.pdf");
 
@@ -224,6 +264,27 @@
       "(accum_level[][1]>4 && EnterBarrel && !EnterDs)", recoBr, nbr_mom,
       br_bins_mom, "same", "#bar{#nu} Data");
    c1.Print("Plots/Data/eff_br_mom.pdf");
+
+   draw.SetLegendPos("br");
+   draw.SetTitleX("cosine(Track Angle)");
+   draw.SetTitleY("Matching Efficiency");
+   draw.DrawEfficiency(data, angle,
+      "(accum_level[][0]>4 && !EnterBarrel && EnterDs)", recoDS, nds_ang,
+      ds_bins_ang, "", "#nu Data");
+   draw.DrawEfficiency(anti_data, angle,
+      "(accum_level[][0]>4 && !EnterBarrel && EnterDs)", recoDS, nds_ang,
+      ds_bins_ang, "same", "#bar{#nu} Data");
+   c1.Print("Plots/Data/eff_ds_ang.pdf");
+
+   draw.SetLegendPos("br");
+   draw.DrawEfficiency(data, angle,
+      "(accum_level[][1]>4 && EnterBarrel && !EnterDs)", recoBr, nbr_ang,
+      br_bins_ang, "", "#nu Data");
+   draw.DrawEfficiency(anti_data, angle,
+      "(accum_level[][1]>4 && EnterBarrel && !EnterDs)", recoBr, nbr_ang,
+      br_bins_ang, "same", "#bar{#nu} Data");
+   c1.Print("Plots/Data/eff_br_ang.pdf");
+
 
    /****************************************************************************
       All four samples. With the results of combining them
