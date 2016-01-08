@@ -388,6 +388,34 @@
    std::cout.setf(ios::fixed,ios::floatfield);
    std::cout.precision(3);
 
+   double dataeff = draw.GetEfficiencyVsBin(data, momentum, isBr +
+      " && EnterBarrel && !EnterDs", recoBr, 1, xbins, &temp).at(0);
+   double dataerr = temp.at(0);
+   double mceff = draw.GetEfficiencyVsBin(mc, momentum, isBr +
+      " && EnterBarrel && !EnterDs", recoBr, 1, xbins, &temp).at(0);
+   double mcerr = temp.at(0);
+   double syst = sqrt((dataeff - mceff) * (dataeff - mceff) + mcerr * mcerr +
+      dataerr*dataerr);
+
+   std::cout << "All (neutrino only), Barrel: " << std::endl;
+   std::cout << "Data eff = " << dataeff << " +/- " << dataerr << std::endl;
+   std::cout << "MC eff = " << mceff << " +/- " << mcerr << std::endl;
+   std::cout << "Syst = " << syst << std::endl << std::endl;
+
+   double dataeff = draw.GetEfficiencyVsBin(data, momentum, isDS +
+      " && !EnterBarrel && EnterDs", recoDS, 1, xbins, &temp).at(0);
+   double dataerr = temp.at(0);
+   double mceff = draw.GetEfficiencyVsBin(mc, momentum, isDS +
+      " && !EnterBarrel && EnterDs", recoDS, 1, xbins, &temp).at(0);
+   double mcerr = temp.at(0);
+   double syst = sqrt((dataeff - mceff) * (dataeff - mceff) + mcerr * mcerr +
+      dataerr*dataerr);
+
+   std::cout << "All (neutrino only), DS: " << std::endl;
+   std::cout << "Data eff = " << dataeff << " +/- " << dataerr << std::endl;
+   std::cout << "MC eff = " << mceff << " +/- " << mcerr << std::endl;
+   std::cout << "Syst = " << syst << std::endl << std::endl;
+
    double dataeff = draw.GetCombinedEfficiency(data, anti_data, momentum, isBr +
       " && EnterBarrel && !EnterDs", recoBr, 1, xbins, &temp).at(0);
    double dataerr = temp.at(0);
