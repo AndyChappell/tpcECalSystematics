@@ -55,7 +55,7 @@ void tpcECalSystematics::DefineCorrections()
       corr().AddCorrection("altmom_corr", new UseGlobalAltMomCorrection(
          UseGlobalAltMomCorrection::kMuon));
    }
-   #endif   
+   #endif
 }
 
 void tpcECalSystematics::DefineSystematics()

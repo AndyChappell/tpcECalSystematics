@@ -27,22 +27,22 @@
    draw.SetTitleX("Track Momentum (MeV)");
    draw.SetTitleY("Counts/Bin");
    draw.Draw(data, mc, momentum, nds_mom, ds_bins_mom, "particle", isDS);
-   c1->Print("Plots/Selections/sel_ds_all_mom.pdf");
+   c1->Print("Plots/Selections/sel_ds_all_mom.png", "png");
 
    draw.SetLegendPos("tl");
    draw.SetTitleX("cosine(Track Angle)");
    draw.Draw(data, mc, angle, nds_ang, ds_bins_ang, "particle", isDS);
-   c1->Print("Plots/Selections/sel_ds_all_ang.pdf");
+   c1->Print("Plots/Selections/sel_ds_all_ang.png", "png");
 
    draw.SetLegendPos("tr");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.Draw(data, mc, momentum, nbr_mom, br_bins_mom, "particle", isBr);
-   c1->Print("Plots/Selections/sel_br_all_mom.pdf");
+   c1->Print("Plots/Selections/sel_br_all_mom.png", "png");
 
    draw.SetLegendPos("tl");
    draw.SetTitleX("cosine(Track Angle)");
    draw.Draw(data, mc, angle, nbr_ang, br_bins_ang, "particle", isBr);
-   c1->Print("Plots/Selections/sel_br_all_ang.pdf");
+   c1->Print("Plots/Selections/sel_br_all_ang.png", "png");
 
    /****************************************************************************
       Electron selections.
@@ -51,22 +51,70 @@
    draw.SetLegendPos("tr");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.Draw(data, mc, momentum, nds_mom, ds_bins_mom, "particle", isDS + isEl);
-   c1->Print("Plots/Selections/sel_ds_ele_mom.pdf");
+   c1->Print("Plots/Selections/sel_ds_ele_mom.png", "png");
 
    draw.SetLegendPos("tl");
    draw.SetTitleX("cosine(Track Angle)");
    draw.Draw(data, mc, angle, nds_ang, ds_bins_ang, "particle", isDS + isEl);
-   c1->Print("Plots/Selections/sel_ds_ele_ang.pdf");
+   c1->Print("Plots/Selections/sel_ds_ele_ang.png", "png");
 
    draw.SetLegendPos("tr");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.Draw(data, mc, momentum, nbr_mom, br_bins_mom, "particle", isBr + isEl);
-   c1->Print("Plots/Selections/sel_br_ele_mom.pdf");
+   c1->Print("Plots/Selections/sel_br_ele_mom.png", "png");
 
    draw.SetLegendPos("tl");
    draw.SetTitleX("cosine(Track Angle)");
    draw.Draw(data, mc, angle, nbr_ang, br_bins_ang, "particle", isBr + isEl);
-   c1->Print("Plots/Selections/sel_br_ele_ang.pdf");
+   c1->Print("Plots/Selections/sel_br_ele_ang.png", "png");
+
+   /****************************************************************************
+      Antinu Muon selections.
+   ****************************************************************************/
+
+   draw.SetLegendPos("tr");
+   draw.SetTitleX("Track Momentum (MeV)");
+   draw.Draw(anti_data, anti_mc, momentum, nds_mom, ds_bins_mom, "particle", isDS + isMu);
+   c1->Print("Plots/Selections/sel_ds_anti_mu_mom.png", "png");
+
+   draw.SetLegendPos("tl");
+   draw.SetTitleX("cosine(Track Angle)");
+   draw.Draw(anti_data, anti_mc, angle, nds_ang, ds_bins_ang, "particle", isDS + isMu);
+   c1->Print("Plots/Selections/sel_ds_anti_mu_ang.png", "png");
+
+   draw.SetLegendPos("tr");
+   draw.SetTitleX("Track Momentum (MeV)");
+   draw.Draw(anti_data, anti_mc, momentum, nbr_mom, br_bins_mom, "particle", isBr + isMu);
+   c1->Print("Plots/Selections/sel_br_anti_mu_mom.png", "png");
+
+   draw.SetLegendPos("tl");
+   draw.SetTitleX("cosine(Track Angle)");
+   draw.Draw(anti_data, anti_mc, angle, nbr_ang, br_bins_ang, "particle", isBr + isMu);
+   c1->Print("Plots/Selections/sel_br_anti_mu_ang.png", "png");
+
+   /****************************************************************************
+      Antinu Electron selections.
+   ****************************************************************************/
+
+   draw.SetLegendPos("tr");
+   draw.SetTitleX("Track Momentum (MeV)");
+   draw.Draw(anti_data, anti_mc, momentum, nds_mom, ds_bins_mom, "particle", isDS + isEl);
+   c1->Print("Plots/Selections/sel_ds_anti_ele_mom.png", "png");
+
+   draw.SetLegendPos("tl");
+   draw.SetTitleX("cosine(Track Angle)");
+   draw.Draw(anti_data, anti_mc, angle, nds_ang, ds_bins_ang, "particle", isDS + isEl);
+   c1->Print("Plots/Selections/sel_ds_anti_ele_ang.png", "png");
+
+   draw.SetLegendPos("tr");
+   draw.SetTitleX("Track Momentum (MeV)");
+   draw.Draw(anti_data, anti_mc, momentum, nbr_mom, br_bins_mom, "particle", isBr + isEl);
+   c1->Print("Plots/Selections/sel_br_anti_ele_mom.png", "png");
+
+   draw.SetLegendPos("tl");
+   draw.SetTitleX("cosine(Track Angle)");
+   draw.Draw(anti_data, anti_mc, angle, nbr_ang, br_bins_ang, "particle", isBr + isEl);
+   c1->Print("Plots/Selections/sel_br_anti_ele_ang.png", "png");
 
    /****************************************************************************
       Muon selections.
@@ -75,22 +123,22 @@
    draw.SetLegendPos("tr");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.Draw(data, mc, momentum, nds_mom, ds_bins_mom, "particle", isDS + isMu);
-   c1->Print("Plots/Selections/sel_ds_mu_mom.pdf");
+   c1->Print("Plots/Selections/sel_ds_mu_mom.png", "png");
 
    draw.SetLegendPos("tl");
    draw.SetTitleX("cosine(Track Angle)");
    draw.Draw(data, mc, angle, nds_ang, ds_bins_ang, "particle", isDS + isMu);
-   c1->Print("Plots/Selections/sel_ds_mu_ang.pdf");
+   c1->Print("Plots/Selections/sel_ds_mu_ang.png", "png");
 
    draw.SetLegendPos("tr");
    draw.SetTitleX("Track Momentum (MeV)");
    draw.Draw(data, mc, momentum, nbr_mom, br_bins_mom, "particle", isBr + isMu);
-   c1->Print("Plots/Selections/sel_br_mu_mom.pdf");
+   c1->Print("Plots/Selections/sel_br_mu_mom.png", "png");
 
    draw.SetLegendPos("tl");
    draw.SetTitleX("cosine(Track Angle)");
    draw.Draw(data, mc, angle, nbr_ang, br_bins_ang, "particle", isBr + isMu);
-   c1->Print("Plots/Selections/sel_br_mu_ang.pdf");
+   c1->Print("Plots/Selections/sel_br_mu_ang.png", "png");
 
    /****************************************************************************
       1D Efficiency plots, all particles.
@@ -104,7 +152,7 @@
       recoDS, nds_mom, ds_bins_mom, "", "#nu Data");
    draw.DrawEfficiency(mc, momentum, isDS + " && !EnterBarrel && EnterDs",
       recoDS, nds_mom, ds_bins_mom, "same", "#nu MC");
-   c1->Print("Plots/Systematics/eff_ds_all_mom.pdf");
+   c1->Print("Plots/Systematics/eff_ds_all_mom.png", "png");
 
    draw.SetLegendPos("br");
    draw.SetTitleX("cosine(Track Angle)");
@@ -112,7 +160,7 @@
       recoDS, nds_ang, ds_bins_ang, "", "#nu Data");
    draw.DrawEfficiency(mc, angle, isDS + " && !EnterBarrel && EnterDs", recoDS,
       nds_ang, ds_bins_ang, "same", "#nu MC");
-   c1->Print("Plots/Systematics/eff_ds_all_ang.pdf");
+   c1->Print("Plots/Systematics/eff_ds_all_ang.png", "png");
 
    draw.SetLegendPos("br");
    draw.SetTitleX("Track Momentum (MeV)");
@@ -120,7 +168,7 @@
       recoBr, nbr_mom, br_bins_mom, "", "#nu Data");
    draw.DrawEfficiency(mc, momentum, isBr + " && EnterBarrel && !EnterDs",
       recoBr, nbr_mom, br_bins_mom, "same", "#nu MC");
-   c1->Print("Plots/Systematics/eff_br_all_mom.pdf");
+   c1->Print("Plots/Systematics/eff_br_all_mom.png", "png");
 
    draw.SetLegendPos("br");
    draw.SetTitleX("cosine(Track Angle)");
@@ -128,7 +176,7 @@
       recoBr, nbr_ang, br_bins_ang, "", "#nu Data");
    draw.DrawEfficiency(mc, angle, isBr + " && EnterBarrel && !EnterDs", recoBr,
       nbr_ang, br_bins_ang, "same", "#nu MC");
-   c1->Print("Plots/Systematics/eff_br_all_ang.pdf");
+   c1->Print("Plots/Systematics/eff_br_all_ang.png", "png");
 
    draw.SetLegendSize(0.15, 0.2);
    draw.SetLegendPos("br");
@@ -142,7 +190,7 @@
       "#bar{#nu} Data");
    draw.DrawEfficiency(anti_mc, momentum, isDS + " && !EnterBarrel && EnterDs",
       recoDS, nds_mom, ds_bins_mom, "same", "#bar{#nu} MC");
-   c1->Print("Plots/Systematics/eff_ds_all_mom_all.pdf");
+   c1->Print("Plots/Systematics/eff_ds_all_mom_all.png", "png");
 
    draw.SetLegendPos("br");
    draw.DrawEfficiency(data, momentum, isBr + " && EnterBarrel && !EnterDs",
@@ -154,7 +202,7 @@
       "#bar{#nu} Data");
    draw.DrawEfficiency(anti_mc, momentum, isBr + " && EnterBarrel && !EnterDs",
       recoBr, nbr_mom, br_bins_mom, "same", "#bar{#nu} MC");
-   c1->Print("Plots/Systematics/eff_br_all_mom_all.pdf");
+   c1->Print("Plots/Systematics/eff_br_all_mom_all.png", "png");
 
    /****************************************************************************
       1D systematics plots, all particles.
@@ -170,7 +218,7 @@
    draw.CalculateSystematic(data, anti_data, mc, anti_mc, momentum, isDS +
       " && !EnterBarrel && EnterDs", "ecaldet == 9", nds_mom, ds_bins_mom,
       "e1same", "#nu + #bar{#nu}");
-   c1.Print("Plots/Systematics/syst_ds_all_mom.pdf");
+   c1.Print("Plots/Systematics/syst_ds_all_mom.png", "png");
 
    draw.SetLegendPos("br");
    draw.SetTitleX("cosine(Track Angle)");
@@ -180,7 +228,7 @@
    draw.CalculateSystematic(data, anti_data, mc, anti_mc, angle, isDS +
       " && !EnterBarrel && EnterDs", "ecaldet == 9", nds_ang, ds_bins_ang,
       "e1same", "#nu + #bar{#nu}");
-   c1.Print("Plots/Systematics/syst_ds_all_ang.pdf");
+   c1.Print("Plots/Systematics/syst_ds_all_ang.png", "png");
 
    draw.SetLegendPos("br");
    draw.SetTitleX("Track Momentum (MeV)");
@@ -189,7 +237,7 @@
    draw.CalculateSystematic(data, anti_data, mc, anti_mc, momentum, isBr +
       " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom, "e1same",
       "#nu + #bar{#nu}");
-   c1.Print("Plots/Systematics/syst_br_all_mom.pdf");
+   c1.Print("Plots/Systematics/syst_br_all_mom.png", "png");
 
    draw.SetLegendPos("br");
    draw.SetTitleX("cosine(Track Angle)");
@@ -198,7 +246,91 @@
    draw.CalculateSystematic(data, anti_data, mc, anti_mc, angle, isBr +
       " && EnterBarrel && !EnterDs", recoBr, nbr_ang, br_bins_ang, "e1same",
       "#nu + #bar{#nu}");
-   c1.Print("Plots/Systematics/syst_br_all_ang.pdf");
+   c1.Print("Plots/Systematics/syst_br_all_ang.png", "png");
+
+   // Electrons
+   draw.SetLegendSize(0.15, 0.1);
+   draw.SetLegendPos("br");
+   draw.SetTitleX("Track Momentum (MeV)");
+   draw.SetTitleY("Systematic Uncertainty");
+   draw.CalculateSystematic(data, mc, momentum, isDS + isEl +
+      " && !EnterBarrel && EnterDs", "ecaldet == 9", nds_mom, ds_bins_mom, "e1",
+      "#nu");
+   draw.CalculateSystematic(data, anti_data, mc, anti_mc, momentum, isDS + isEl +
+      " && !EnterBarrel && EnterDs", "ecaldet == 9", nds_mom, ds_bins_mom,
+      "e1same", "#nu + #bar{#nu}");
+   c1.Print("Plots/Systematics/syst_ds_ele_mom.png", "png");
+
+   draw.SetLegendPos("tr");
+   draw.SetTitleX("cosine(Track Angle)");
+   draw.CalculateSystematic(data, mc, angle, isDS + isEl +
+      " && !EnterBarrel && EnterDs", "ecaldet == 9", nds_ang, ds_bins_ang,
+      "e1", "#nu");
+   draw.CalculateSystematic(data, anti_data, mc, anti_mc, angle, isDS + isEl +
+      " && !EnterBarrel && EnterDs", "ecaldet == 9", nds_ang, ds_bins_ang,
+      "e1same", "#nu + #bar{#nu}");
+   c1.Print("Plots/Systematics/syst_ds_ele_ang.png", "png");
+
+   draw.SetLegendPos("br");
+   draw.SetTitleX("Track Momentum (MeV)");
+   draw.CalculateSystematic(data, mc, momentum, isBr + isEl +
+      " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom, "e1", "#nu");
+   draw.CalculateSystematic(data, anti_data, mc, anti_mc, momentum, isBr + isEl +
+      " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom, "e1same",
+      "#nu + #bar{#nu}");
+   c1.Print("Plots/Systematics/syst_br_ele_mom.png", "png");
+
+   draw.SetLegendPos("br");
+   draw.SetTitleX("cosine(Track Angle)");
+   draw.CalculateSystematic(data, mc, angle, isBr + isEl +
+      " && EnterBarrel && !EnterDs", recoBr, nbr_ang, br_bins_ang, "e1", "#nu");
+   draw.CalculateSystematic(data, anti_data, mc, anti_mc, angle, isBr + isEl +
+      " && EnterBarrel && !EnterDs", recoBr, nbr_ang, br_bins_ang, "e1same",
+      "#nu + #bar{#nu}");
+   c1.Print("Plots/Systematics/syst_br_ele_ang.png", "png");
+   // End Electrons
+
+   // Muons
+   draw.SetLegendSize(0.15, 0.1);
+   draw.SetLegendPos("br");
+   draw.SetTitleX("Track Momentum (MeV)");
+   draw.SetTitleY("Systematic Uncertainty");
+   draw.CalculateSystematic(data, mc, momentum, isDS + isMu +
+      " && !EnterBarrel && EnterDs", "ecaldet == 9", nds_mom, ds_bins_mom, "e1",
+      "#nu");
+   draw.CalculateSystematic(data, anti_data, mc, anti_mc, momentum, isDS + isMu +
+      " && !EnterBarrel && EnterDs", "ecaldet == 9", nds_mom, ds_bins_mom,
+      "e1same", "#nu + #bar{#nu}");
+   c1.Print("Plots/Systematics/syst_ds_mu_mom.png", "png");
+
+   draw.SetLegendPos("br");
+   draw.SetTitleX("cosine(Track Angle)");
+   draw.CalculateSystematic(data, mc, angle, isDS + isMu +
+      " && !EnterBarrel && EnterDs", "ecaldet == 9", nds_ang, ds_bins_ang,
+      "e1", "#nu");
+   draw.CalculateSystematic(data, anti_data, mc, anti_mc, angle, isDS + isMu +
+      " && !EnterBarrel && EnterDs", "ecaldet == 9", nds_ang, ds_bins_ang,
+      "e1same", "#nu + #bar{#nu}");
+   c1.Print("Plots/Systematics/syst_ds_mu_ang.png", "png");
+
+   draw.SetLegendPos("br");
+   draw.SetTitleX("Track Momentum (MeV)");
+   draw.CalculateSystematic(data, mc, momentum, isBr + isMu +
+      " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom, "e1", "#nu");
+   draw.CalculateSystematic(data, anti_data, mc, anti_mc, momentum, isBr + isMu +
+      " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom, "e1same",
+      "#nu + #bar{#nu}");
+   c1.Print("Plots/Systematics/syst_br_mu_mom.png", "png");
+
+   draw.SetLegendPos("tr");
+   draw.SetTitleX("cosine(Track Angle)");
+   draw.CalculateSystematic(data, mc, angle, isBr + isMu +
+      " && EnterBarrel && !EnterDs", recoBr, nbr_ang, br_bins_ang, "e1", "#nu");
+   draw.CalculateSystematic(data, anti_data, mc, anti_mc, angle, isBr + isMu +
+      " && EnterBarrel && !EnterDs", recoBr, nbr_ang, br_bins_ang, "e1same",
+      "#nu + #bar{#nu}");
+   c1.Print("Plots/Systematics/syst_br_mu_ang.png", "png");
+   // End Muons
 
    /****************************************************************************
       2D Efficiency plots.
@@ -209,22 +341,22 @@
    draw.DrawCombinedEfficiency(mc, anti_mc, momentum, angle, isDS +
       " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom, nds_ang,
       ds_bins_ang, "COLZTEXT");
-   c1->Print("Plots/Systematics/eff_ds_all_mc_2d.pdf");
+   c1->Print("Plots/Systematics/eff_ds_all_mc_2d.png", "png");
 
    draw.DrawCombinedEfficiency(data, anti_data, momentum, angle, isDS +
       " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom, nds_ang,
       ds_bins_ang, "COLZTEXT");
-   c1->Print("Plots/Systematics/eff_ds_all_data_2d.pdf");
+   c1->Print("Plots/Systematics/eff_ds_all_data_2d.png", "png");
 
    draw.DrawCombinedEfficiency(mc, anti_mc, momentum, angle, isBr +
       " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom, nbr_ang,
       br_bins_ang, "COLZTEXT");
-   c1->Print("Plots/Systematics/eff_br_all_mc_2d.pdf");
+   c1->Print("Plots/Systematics/eff_br_all_mc_2d.png", "png");
 
    draw.DrawCombinedEfficiency(data, anti_data, momentum, angle, isBr +
       " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom, nbr_ang,
       br_bins_ang, "COLZTEXT");
-   c1->Print("Plots/Systematics/eff_br_all_data_2d.pdf");
+   c1->Print("Plots/Systematics/eff_br_all_data_2d.png", "png");
 
    /****************************************************************************
       2D systematics plots.
@@ -233,22 +365,22 @@
    draw.CalculateSystematic(data, mc, momentum, angle,
       isDS + " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom,
       nds_ang, ds_bins_ang, "COLZTEXT");
-   c1->Print("Plots/Systematics/syst_neutonly_ds_all_2d.pdf");
+   c1->Print("Plots/Systematics/syst_neutonly_ds_all_2d.png", "png");
 
    draw.CalculateSystematic(data, mc, momentum, angle,
       isBr + " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom,
       nbr_ang, br_bins_ang, "COLZTEXT");
-   c1->Print("Plots/Systematics/syst_neutonly_br_all_2d.pdf");
+   c1->Print("Plots/Systematics/syst_neutonly_br_all_2d.png", "png");
 
    draw.CalculateSystematic(data, anti_data, mc, anti_mc, momentum, angle,
       isDS + " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom,
       nds_ang, ds_bins_ang, "COLZTEXT");
-   c1->Print("Plots/Systematics/syst_ds_all_2d.pdf");
+   c1->Print("Plots/Systematics/syst_ds_all_2d.png", "png");
 
    draw.CalculateSystematic(data, anti_data, mc, anti_mc, momentum, angle,
       isBr + " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom,
       nbr_ang, br_bins_ang, "COLZTEXT");
-   c1->Print("Plots/Systematics/syst_br_all_2d.pdf");
+   c1->Print("Plots/Systematics/syst_br_all_2d.png", "png");
 
    /****************************************************************************
       Different particles.
@@ -262,23 +394,23 @@
       " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom, "", "Data");
    draw.DrawCombinedEfficiency(mc, anti_mc, momentum, isDS + isEl +
       " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom, "same", "MC");
-   c1->Print("Plots/Systematics/eff_ds_ele_mom.pdf");
+   c1->Print("Plots/Systematics/eff_ds_ele_mom.png", "png");
 
    draw.SetLegendPos("br");
    draw.DrawCombinedEfficiency(data, anti_data, momentum, isBr + isEl +
       " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom, "", "Data");
    draw.DrawCombinedEfficiency(mc, anti_mc, momentum, isBr + isEl +
       " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom, "same", "MC");
-   c1->Print("Plots/Systematics/eff_br_ele_mom.pdf");
+   c1->Print("Plots/Systematics/eff_br_ele_mom.png", "png");
 
    draw.SetTitleY("Systematic Uncertainty");
    draw.CalculateSystematic(data, anti_data, mc, anti_mc, momentum, isDS +
       isEl +  " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom);
-   c1->Print("Plots/Systematics/syst_ds_ele_mom.pdf");
+   c1->Print("Plots/Systematics/syst_ds_ele_mom.png", "png");
 
    draw.CalculateSystematic(data, anti_data, mc, anti_mc, momentum, isBr +
       isEl +  " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom);
-   c1->Print("Plots/Systematics/syst_br_ele_mom.pdf");
+   c1->Print("Plots/Systematics/syst_br_ele_mom.png", "png");
 
    // Muons
    draw.SetLegendPos("br");
@@ -287,23 +419,23 @@
       " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom, "", "Data");
    draw.DrawCombinedEfficiency(mc, anti_mc, momentum, isDS + isMu +
       " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom, "same", "MC");
-   c1->Print("Plots/Systematics/eff_ds_mu_mom.pdf");
+   c1->Print("Plots/Systematics/eff_ds_mu_mom.png", "png");
 
    draw.SetLegendPos("br");
    draw.DrawCombinedEfficiency(data, anti_data, momentum, isBr + isMu +
       " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom, "", "Data");
    draw.DrawCombinedEfficiency(mc, anti_mc, momentum, isBr + isMu +
       " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom, "same", "MC");
-   c1->Print("Plots/Systematics/eff_br_mu_mom.pdf");
+   c1->Print("Plots/Systematics/eff_br_mu_mom.png", "png");
 
    draw.SetTitleY("Systematic Uncertainty");
    draw.CalculateSystematic(data, anti_data, mc, anti_mc, momentum, isDS +
       isMu +  " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom);
-   c1->Print("Plots/Systematics/syst_ds_mu_mom.pdf");
+   c1->Print("Plots/Systematics/syst_ds_mu_mom.png", "png");
 
    draw.CalculateSystematic(data, anti_data, mc, anti_mc, momentum, isBr +
       isMu +  " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom);
-   c1->Print("Plots/Systematics/syst_br_mu_mom.pdf");
+   c1->Print("Plots/Systematics/syst_br_mu_mom.png", "png");
 
    // Protons
    draw.SetLegendPos("br");
@@ -311,23 +443,23 @@
       " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom, "", "Data");
    draw.DrawCombinedEfficiency(mc, anti_mc, momentum, isDS + isProt +
       " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom, "same", "MC");
-   c1->Print("Plots/Systematics/eff_ds_prot_mom.pdf");
+   c1->Print("Plots/Systematics/eff_ds_prot_mom.png", "png");
 
    draw.SetLegendPos("br");
    draw.DrawCombinedEfficiency(data, anti_data, momentum, isBr + isProt +
       " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom, "", "Data");
    draw.DrawCombinedEfficiency(mc, anti_mc, momentum, isBr + isProt +
       " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom, "same", "MC");
-   c1->Print("Plots/Systematics/eff_br_prot_mom.pdf");
+   c1->Print("Plots/Systematics/eff_br_prot_mom.png", "png");
 
    draw.SetTitleY("Systematic Uncertainty");
    draw.CalculateSystematic(data, anti_data, mc, anti_mc, momentum, isDS +
       isProt +  " && !EnterBarrel && EnterDs", recoDS, nds_mom, ds_bins_mom);
-   c1->Print("Plots/Systematics/syst_ds_prot_mom.pdf");
+   c1->Print("Plots/Systematics/syst_ds_prot_mom.png", "png");
 
    draw.CalculateSystematic(data, anti_data, mc, anti_mc, momentum, isBr +
       isProt +  " && EnterBarrel && !EnterDs", recoBr, nbr_mom, br_bins_mom);
-   c1->Print("Plots/Systematics/syst_br_prot_mom.pdf");
+   c1->Print("Plots/Systematics/syst_br_prot_mom.png", "png");
 
    /****************************************************************************
       True matching.
@@ -341,7 +473,7 @@
       " && ecaldet==9", nds_mom, ds_bins_mom, "", "#nu MC");
    draw.DrawEfficiency(anti_mc, momentum, isDS + "&& TrueDs", isDS +
       "&& ecaldet==9", nds_mom, ds_bins_mom, "same", "#bar{#nu} MC");
-   c1->Print("Plots/Others/true_eff_ds_all_mom.pdf");
+   c1->Print("Plots/Others/true_eff_ds_all_mom.png", "png");
 
    draw.SetLegendPos("br");
    draw.SetTitleX("cosine(Track Angle)");
@@ -349,7 +481,7 @@
       nds_ang, ds_bins_ang, "", "#nu MC");
    draw.DrawEfficiency(anti_mc, angle, isDS + "&& TrueDs", isDS +
       " && ecaldet==9", nds_ang, ds_bins_ang, "same", "#bar{#nu} MC");
-   c1->Print("Plots/Others/true_eff_ds_all_ang.pdf");
+   c1->Print("Plots/Others/true_eff_ds_all_ang.png", "png");
 
    draw.SetLegendPos("br");
    draw.SetTitleX("Track Momentum (MeV)");
@@ -357,7 +489,7 @@
       " && ecaldet<9 && ecaldet>4", nbr_mom, br_bins_mom, "", "#nu MC");
    draw.DrawEfficiency(anti_mc, momentum, isBr + "&& TrueBarrel", isBr +
       "&& ecaldet<9 && ecaldet>4", nbr_mom, br_bins_mom, "same", "#bar{#nu} MC");
-   c1->Print("Plots/Others/true_eff_br_all_mom.pdf");
+   c1->Print("Plots/Others/true_eff_br_all_mom.png", "png");
 
    draw.SetLegendPos("br");
    draw.SetTitleX("cosine(Track Angle)");
@@ -365,7 +497,7 @@
       "&& ecaldet<9 && ecaldet>4", nbr_ang, br_bins_ang, "", "#nu MC");
    draw.DrawEfficiency(anti_mc, angle, isBr + "&& TrueBarrel", isBr +
       "&& ecaldet<9 && ecaldet>4", nbr_ang, br_bins_ang, "same", "#bar{#nu} MC");
-   c1->Print("Plots/Others/true_eff_br_all_ang.pdf");
+   c1->Print("Plots/Others/true_eff_br_all_ang.png", "png");
 
    /****************************************************************************
       Event weights. For combining histograms.
@@ -377,14 +509,14 @@
       1, "", "e1", "Data");      
    draw.DrawRatio(mc, anti_mc, momentum, nds_mom, ds_bins_mom, isDS, isDS,
       1, "same", "e1", "MC");
-   c1->Print("Plots/Others/ratio_ds_all_mom.pdf");
+   c1->Print("Plots/Others/ratio_ds_all_mom.png", "png");
 
    draw.SetLegendPos("br");
    draw.DrawRatio(data, anti_data, momentum, nbr_mom, br_bins_mom, isBr, isBr,
       1, "", "e1", "Data");
    draw.DrawRatio(mc, anti_mc, momentum, nbr_mom, br_bins_mom, isBr, isBr,
       1, "same", "e1", "MC");
-   c1->Print("Plots/Others/ratio_br_all_mom.pdf");
+   c1->Print("Plots/Others/ratio_br_all_mom.png", "png");
 
    c1->Close();
 
@@ -426,6 +558,34 @@
    std::cout << "MC eff = " << mceff << " +/- " << mcerr << std::endl;
    std::cout << "Syst = " << syst << std::endl << std::endl;
 
+   double dataeff = draw.GetEfficiencyVsBin(anti_data, momentum, isBr +
+      " && EnterBarrel && !EnterDs", recoBr, 1, xbins, &temp).at(0);
+   double dataerr = temp.at(0);
+   double mceff = draw.GetEfficiencyVsBin(anti_mc, momentum, isBr +
+      " && EnterBarrel && !EnterDs", recoBr, 1, xbins, &temp).at(0);
+   double mcerr = temp.at(0);
+   double syst = sqrt((dataeff - mceff) * (dataeff - mceff) + mcerr * mcerr +
+      dataerr*dataerr);
+
+   std::cout << "All (antineutrino only), Barrel: " << std::endl;
+   std::cout << "Data eff = " << dataeff << " +/- " << dataerr << std::endl;
+   std::cout << "MC eff = " << mceff << " +/- " << mcerr << std::endl;
+   std::cout << "Syst = " << syst << std::endl << std::endl;
+
+   double dataeff = draw.GetEfficiencyVsBin(anti_data, momentum, isDS +
+      " && !EnterBarrel && EnterDs", recoDS, 1, xbins, &temp).at(0);
+   double dataerr = temp.at(0);
+   double mceff = draw.GetEfficiencyVsBin(anti_mc, momentum, isDS +
+      " && !EnterBarrel && EnterDs", recoDS, 1, xbins, &temp).at(0);
+   double mcerr = temp.at(0);
+   double syst = sqrt((dataeff - mceff) * (dataeff - mceff) + mcerr * mcerr +
+      dataerr*dataerr);
+
+   std::cout << "All (antineutrino only), DS: " << std::endl;
+   std::cout << "Data eff = " << dataeff << " +/- " << dataerr << std::endl;
+   std::cout << "MC eff = " << mceff << " +/- " << mcerr << std::endl;
+   std::cout << "Syst = " << syst << std::endl << std::endl;
+
    double dataeff = draw.GetCombinedEfficiency(data, anti_data, momentum, isBr +
       " && EnterBarrel && !EnterDs", recoBr, 1, xbins, &temp).at(0);
    double dataerr = temp.at(0);
@@ -454,6 +614,62 @@
    std::cout << "MC eff = " << mceff << " +/- " << mcerr << std::endl;
    std::cout << "Syst = " << syst << std::endl << std::endl;
 
+   double dataeff = draw.GetEfficiencyVsBin(data, momentum, isBr + isEl +
+      " && EnterBarrel && !EnterDs", recoBr, 1, xbins, &temp).at(0);
+   double dataerr = temp.at(0);
+   double mceff = draw.GetEfficiencyVsBin(mc, momentum, isBr + isEl +
+      " && EnterBarrel && !EnterDs", recoBr, 1, xbins, &temp).at(0);
+   double mcerr = temp.at(0);
+   double syst = sqrt((dataeff - mceff) * (dataeff - mceff) + mcerr * mcerr +
+      dataerr*dataerr);
+
+   std::cout << "Electrons (neutrino only), Barrel: " << std::endl;
+   std::cout << "Data eff = " << dataeff << " +/- " << dataerr << std::endl;
+   std::cout << "MC eff = " << mceff << " +/- " << mcerr << std::endl;
+   std::cout << "Syst = " << syst << std::endl << std::endl;
+
+   double dataeff = draw.GetEfficiencyVsBin(anti_data, momentum, isBr + isEl +
+      " && EnterBarrel && !EnterDs", recoBr, 1, xbins, &temp).at(0);
+   double dataerr = temp.at(0);
+   double mceff = draw.GetEfficiencyVsBin(anti_mc, momentum, isBr + isEl +
+      " && EnterBarrel && !EnterDs", recoBr, 1, xbins, &temp).at(0);
+   double mcerr = temp.at(0);
+   double syst = sqrt((dataeff - mceff) * (dataeff - mceff) + mcerr * mcerr +
+      dataerr*dataerr);
+
+   std::cout << "Electrons (antineutrino only), Barrel: " << std::endl;
+   std::cout << "Data eff = " << dataeff << " +/- " << dataerr << std::endl;
+   std::cout << "MC eff = " << mceff << " +/- " << mcerr << std::endl;
+   std::cout << "Syst = " << syst << std::endl << std::endl;
+
+   double dataeff = draw.GetEfficiencyVsBin(data, momentum, isDS +
+      isEl + " && !EnterBarrel && EnterDs", recoDS, 1, xbins, &temp).at(0);
+   double dataerr = temp.at(0);
+   double mceff = draw.GetEfficiencyVsBin(mc, momentum, isDS +
+      isEl + " && !EnterBarrel && EnterDs", recoDS, 1, xbins, &temp).at(0);
+   double mcerr = temp.at(0);
+   double syst = sqrt((dataeff - mceff) * (dataeff - mceff) + mcerr * mcerr +
+      dataerr * dataerr);
+
+   std::cout << "Electrons (neutrino only), DS: " << std::endl;
+   std::cout << "Data eff = " << dataeff << " +/- " << dataerr << std::endl;
+   std::cout << "MC eff = " << mceff << " +/- " << mcerr << std::endl;
+   std::cout << "Syst = " << syst << std::endl << std::endl;
+
+   double dataeff = draw.GetEfficiencyVsBin(anti_data, momentum, isDS +
+      isEl + " && !EnterBarrel && EnterDs", recoDS, 1, xbins, &temp).at(0);
+   double dataerr = temp.at(0);
+   double mceff = draw.GetEfficiencyVsBin(anti_mc, momentum, isDS +
+      isEl + " && !EnterBarrel && EnterDs", recoDS, 1, xbins, &temp).at(0);
+   double mcerr = temp.at(0);
+   double syst = sqrt((dataeff - mceff) * (dataeff - mceff) + mcerr * mcerr +
+      dataerr * dataerr);
+
+   std::cout << "Electrons (antineutrino only), DS: " << std::endl;
+   std::cout << "Data eff = " << dataeff << " +/- " << dataerr << std::endl;
+   std::cout << "MC eff = " << mceff << " +/- " << mcerr << std::endl;
+   std::cout << "Syst = " << syst << std::endl << std::endl;
+
    double dataeff = draw.GetCombinedEfficiency(data, anti_data, momentum, isBr +
       isEl + " && EnterBarrel && !EnterDs", recoBr, 1, xbins, &temp).at(0);
    double dataerr = temp.at(0);
@@ -478,6 +694,62 @@
       dataerr * dataerr);
 
    std::cout << "Electrons, DS: " << std::endl;
+   std::cout << "Data eff = " << dataeff << " +/- " << dataerr << std::endl;
+   std::cout << "MC eff = " << mceff << " +/- " << mcerr << std::endl;
+   std::cout << "Syst = " << syst << std::endl << std::endl;
+
+   double dataeff = draw.GetEfficiencyVsBin(data, momentum, isBr + isMu +
+      " && EnterBarrel && !EnterDs", recoBr, 1, xbins, &temp).at(0);
+   double dataerr = temp.at(0);
+   double mceff = draw.GetEfficiencyVsBin(mc, momentum, isBr + isMu +
+      " && EnterBarrel && !EnterDs", recoBr, 1, xbins, &temp).at(0);
+   double mcerr = temp.at(0);
+   double syst = sqrt((dataeff - mceff) * (dataeff - mceff) + mcerr * mcerr +
+      dataerr*dataerr);
+
+   std::cout << "Muons (neutrino only), Barrel: " << std::endl;
+   std::cout << "Data eff = " << dataeff << " +/- " << dataerr << std::endl;
+   std::cout << "MC eff = " << mceff << " +/- " << mcerr << std::endl;
+   std::cout << "Syst = " << syst << std::endl << std::endl;
+
+   double dataeff = draw.GetEfficiencyVsBin(anti_data, momentum, isBr + isMu +
+      " && EnterBarrel && !EnterDs", recoBr, 1, xbins, &temp).at(0);
+   double dataerr = temp.at(0);
+   double mceff = draw.GetEfficiencyVsBin(anti_mc, momentum, isBr + isMu +
+      " && EnterBarrel && !EnterDs", recoBr, 1, xbins, &temp).at(0);
+   double mcerr = temp.at(0);
+   double syst = sqrt((dataeff - mceff) * (dataeff - mceff) + mcerr * mcerr +
+      dataerr*dataerr);
+
+   std::cout << "Muons (antineutrino only), Barrel: " << std::endl;
+   std::cout << "Data eff = " << dataeff << " +/- " << dataerr << std::endl;
+   std::cout << "MC eff = " << mceff << " +/- " << mcerr << std::endl;
+   std::cout << "Syst = " << syst << std::endl << std::endl;
+
+   double dataeff = draw.GetEfficiencyVsBin(data, momentum, isDS +
+      isMu + " && !EnterBarrel && EnterDs", recoDS, 1, xbins, &temp).at(0);
+   double dataerr = temp.at(0);
+   double mceff = draw.GetEfficiencyVsBin(mc, momentum, isDS +
+      isMu + " && !EnterBarrel && EnterDs", recoDS, 1, xbins, &temp).at(0);
+   double mcerr = temp.at(0);
+   double syst = sqrt((dataeff - mceff) * (dataeff - mceff) + mcerr * mcerr +
+      dataerr * dataerr);
+
+   std::cout << "Muons (neutrino only), DS: " << std::endl;
+   std::cout << "Data eff = " << dataeff << " +/- " << dataerr << std::endl;
+   std::cout << "MC eff = " << mceff << " +/- " << mcerr << std::endl;
+   std::cout << "Syst = " << syst << std::endl << std::endl;
+
+   double dataeff = draw.GetEfficiencyVsBin(anti_data, momentum, isDS +
+      isMu + " && !EnterBarrel && EnterDs", recoDS, 1, xbins, &temp).at(0);
+   double dataerr = temp.at(0);
+   double mceff = draw.GetEfficiencyVsBin(anti_mc, momentum, isDS +
+      isMu + " && !EnterBarrel && EnterDs", recoDS, 1, xbins, &temp).at(0);
+   double mcerr = temp.at(0);
+   double syst = sqrt((dataeff - mceff) * (dataeff - mceff) + mcerr * mcerr +
+      dataerr * dataerr);
+
+   std::cout << "Muons (antineutrino only), DS: " << std::endl;
    std::cout << "Data eff = " << dataeff << " +/- " << dataerr << std::endl;
    std::cout << "MC eff = " << mceff << " +/- " << mcerr << std::endl;
    std::cout << "Syst = " << syst << std::endl << std::endl;
