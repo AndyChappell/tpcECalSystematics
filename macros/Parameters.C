@@ -66,22 +66,25 @@
    draw.ApplyRange(false);
    gStyle->SetOptStat(0);
 
-   //const int nds_mom = 5;
-   //double ds_bins_mom[6] = {0,400,800,1200,2500,5000};
-   const int nds_mom = 4;
+/*   const int nds_mom = 4;
    double ds_bins_mom[5] = {0,500,700,1800,5000};
-   //const int nbr_mom = 5;
-   //double br_bins_mom[6] = {0,400,800,1200,2500,5000};
    const int nbr_mom = 5;
    double br_bins_mom[6] = {0,400,800,2000,3000,5000};
-   //const int nds_ang = 3;
-   //double ds_bins_ang[4] = {0.7,0.85,0.95,1.0};
    const int nds_ang = 5;
    double ds_bins_ang[6] = {0.75,0.8,0.85,0.925,0.975,1.0};
-   //const int nbr_ang = 4;
-   //double br_bins_ang[5] = {0,0.2,0.4,0.6,1.0};
    const int nbr_ang = 7;
-   double br_bins_ang[8] = {-0.5,-0.15,0,0.25,0.35,0.65,0.75,0.85};
+   double br_bins_ang[8] = {-0.5,-0.15,0,0.25,0.35,0.65,0.75,0.85};*/
+
+   const int nds_mom = 8;
+   double ds_bins_mom[9] = {0,200,400,600,800,1250,1750,4000,5000};
+   const int nds_ang = 4;
+   double ds_bins_ang[5] = {0.75,0.8,0.85,0.925,1.0};
+
+   // Subject to change, very low stats at mid-to-high momentum
+   const int nbr_mom = 6;
+   double br_bins_mom[7] = {0,200,400,600,1800,3200,5000};
+   const int nbr_ang = 7;
+   double br_bins_ang[8] = {-0.3,-0.1,0.1,0.3,0.4,0.7,0.775,0.825};
 
    // Appears to enter barrel based on cuts
    std::string isBr = "accum_level[][1]>4";
